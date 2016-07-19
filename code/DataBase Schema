@@ -1,0 +1,97 @@
+-- tables
+-- Table: User
+CREATE TABLE "User" (
+   ID integer NOT NULL CONSTRAINT User_pk PRIMARY KEY AUTOINCREMENT,
+   userID varchar(40) NOT NULL,
+   password varchar(50) NOT NULL,
+   role varchar(10) NOT NULL,
+   firstName varchar(20) NOT NULL,
+   lastName varchar(20) NOT NULL,
+   ITUID varchar(10) NOT NULL
+);
+-- End of file.
+
+-- tables
+-- Table: Course
+CREATE TABLE Course (
+   ID integer NOT NULL CONSTRAINT Course_pk PRIMARY KEY AUTOINCREMENT,
+   title varchar(30) NOT NULL,
+   session integer NOT NULL,
+   description varchar(300) NOT NULL,
+   instructorID integer NOT NULL
+);
+-- End of file.
+
+-- tables
+-- Table: Enrollment
+CREATE TABLE Enrollment (
+   ID integer NOT NULL CONSTRAINT Enrollment_pk PRIMARY KEY AUTOINCREMENT,
+   courseID integer NOT NULL,
+   studentID integer NOT NULL
+);
+-- End of file.
+
+-- tables
+-- Table: Assignment
+CREATE TABLE Assignment (
+   ID integer NOT NULL CONSTRAINT Assignment_pk PRIMARY KEY AUTOINCREMENT,
+   assignmentTitle varchar(300) NOT NULL,
+   dueTime datetime NOT NULL,
+   description varchar(300) NOT NULL,
+   courseID integer NOT NULL
+);
+-- End of file.
+
+
+-- tables
+-- Table: AssignmentSubmission
+CREATE TABLE AssignmentSubmission (
+   ID integer NOT NULL CONSTRAINT AssignmentSubmission_pk PRIMARY KEY AUTOINCREMENT,
+   assignmentID integer NOT NULL,
+   studentID integer NOT NULL,
+   fileName varchar(100) NOT NULL,
+   fileType varchar(50) NOT NULL,
+   file blob NOT NULL,
+   submissionTime datetime NOT NULL,
+   runtime float NOT NULL,
+   testcaseTotal integer NOT NULL,
+   testcasePass integer NOT NULL,
+   version integer NOT NULL,
+   grade float NOT NULL
+);
+-- End of file.
+
+
+-- tables
+-- Table: SurveyQuestion
+CREATE TABLE SurveyQuestion (
+   ID integer NOT NULL CONSTRAINT SurveyQuestion_pk PRIMARY KEY AUTOINCREMENT,
+   assignmentID integer NOT NULL,
+   title varchar(100) NOT NULL,
+   question1 varchar(1000) NOT NULL,
+   question1Type varchar(40) NOT NULL,
+   question2 varchar(1000) NOT NULL,
+   question2Type varchar(40) NOT NULL,
+   question3 varchar(1000) NOT NULL,
+   question3Type varchar(40) NOT NULL,
+   question4 varchar(1000),
+   question4Type varchar(40),
+   question5 varchar(1000),
+   question5Type varchar(40)
+);
+-- End of file.
+
+-- tables
+-- Table: SurveyAnswer
+CREATE TABLE SurveyAnswer (
+   ID integer NOT NULL CONSTRAINT SurveyAnswer_pk PRIMARY KEY AUTOINCREMENT,
+   questionID integer NOT NULL,
+   answer1 varchar(1000) NOT NULL,
+   answer2 varchar(1000) NOT NULL,
+   answer3 varchar(1000) NOT NULL,
+   answer4 varchar(1000),
+   answer5 varchar(1000),
+   studentID integer NOT NULL
+);
+-- End of file.
+
