@@ -1,0 +1,10 @@
+{% extends "personal/header.html" %}
+        
+{% block content %}
+	{% for c in contactinfo %}
+		<p>{{c}}</p>
+	{% endfor%}
+
+{% include "personal/includes/htmlsnippet.html" %}
+
+{% endblock %}
