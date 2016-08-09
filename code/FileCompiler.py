@@ -6,32 +6,52 @@ Email: rannie.xue@gmail.com
 
 import Database
 import FileSystem
+import os
 
 from subprocess import call
 
-class FileCompiler(object):
-	def cProgram(location, CFileName, args):
-		#compile into executable file
-		file = ''.join(location, CFileName)
-		fileToExecute = file[:-2]
-		print(fileToExecute)		
-		call(['gcc','-Wall', CFileName,'-o',fileToExecute])
 
-		#run excecutable file
-		result = call([fileToExecute, input])
+def cProgram(path, filename, para):
+	#compile into executable file
+	#file = ''.join(path, CFileName)
+	file = str(path) + str(filename)
+	print file
+	fileToExecute = file[:-2]	
+	call(['gcc','-Wall', file,'-o',fileToExecute])
+	#print fileToExecute
+	#run excecutable file
+	result = call([fileToExecute, para])
+
+def cplusProgram(path, filename, para):
+	pass
+
+def javaProgram(path, filename, para):
+	file = str(path) + str(filename)
+	print file
+	fileToExecute = file[:-5]	
+	call(['javac', file])
+	print fileToExecute
+	result = call(['java', fileToExecute, para])
 
 
-	def cplusProgram():
-		pass
+def pythonProgram(path, filename, para):
+	file = str(path) + str(filename)
+	print file
+	call(['python', file, para])
 
 
-	def javaProgram():
-		pass
+if __name__== '__main__':
+	path = "/Users/Jingran/StudentGradingSystem/code/TestCode/"
+	
+	CFileName = "CTestCode.c"
+	CPara = 'This is a C test code. You made it!'
+	cProgram(path, CFileName, CPara)
 
+	JavaFileName = "JavaTestCode.java"
+	JPara = "This is a Java test code. You made it!"
+	javaProgram(path, JavaFileName, JPara)
 
-	def pythonProgram():
-		pass
+	PyFileName = "PyTestCode.py"
+	PPara = 'This is a python test code. You made it!'
+	pythonProgram(path, PyFileName, PPara)
 
-location = "/Users/Jingran/StudentGradingSystem/code/TestCode"
-CFileName = "CTestCode.c"
-FileCompiler().cProgram(location,CFileName)
