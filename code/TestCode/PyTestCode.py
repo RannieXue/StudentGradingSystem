@@ -9,7 +9,7 @@ except IndexError:
 
 def PyTestCode(para = first_arg):
 	if len(para)>1:
-		print ("This is your input: {}".format(para))
+		print (para)
 	else:
 		print ("But it still works!")
 
